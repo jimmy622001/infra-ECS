@@ -1,0 +1,71 @@
+image: docker:stable
+
+stages:
+  - test
+  - deploy-common
+  - deploy-dev
+
+
+deploy-common:
+  image: docker:stable
+  services:
+    - docker:20.10.4-dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: 1
+  stage: deploy-common
+  before_script:
+    - apk add --no-cache make
+  script: |
+    source .gitlab/create_env_file.sh common
+    make deploy layer=common environment=common destroy=false
+
+deploy-dev:
+  image: docker:stable
+  services:
+    - docker:20.10.4-dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: /certs
+    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: 1
+  dependencies:
+    - deploy-common
+  stage: deploy-dev
+  before_script:
+    - apk add --no-cache make
+  script: |
+    source .gitlab/create_env_file.sh dev
+    make deploy layer=environments-base environment=dev destroy=false
+    
+checkov:
+  stage: test
+  allow_failure: true  # True for AutoDevOps compatibility
+  image:
+    name: bridgecrew/checkov:latest
+    entrypoint:
+      - '/usr/bin/env'
+      - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+  rules:
+    - if: $SAST_DISABLED
+      when: never
+    - if: $CI_COMMIT_BRANCH
+      exists:
+        - '**/*.yml'
+        - '**/*.yaml'
+        - '**/*.json'
+        - '**/*.template'
+        - '**/*.tf'      
+        - '**/serverless.yml'
+        - '**/serverless.yaml'
+  script:
+    - checkov -d . -o junitxml | tee checkov.test.xml
+  artifacts:
+    reports:
+      junit: "checkov.test.xml"
+    paths:
+      - "checkov.test.xml"
