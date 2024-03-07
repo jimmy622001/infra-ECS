@@ -77,4 +77,4 @@ endif
             sh -c 'cd /terraform/infra/layers/$(layer) && terraform apply $(DESTROY_FLAG) -auto-approve infrastructure.tf.plan && rm -rf infrastructure.tf.plan'
 
 deploy: init plan ## Deploy Terraform layer for the specified environment
-deploy-apply: init plan apply
+deploy-apply: init plan
