@@ -16,11 +16,11 @@ variable "region" {
 
 variable "service_tld" {
   description = "TLD for service"
-  default     = "risklick.ch"
+  default     = "https://jimmy622001.wixsite.com/"
   type        = string
 }
 
 variable "tag_scenario" {
   description = "Scenario name for all resources"
-  default     = "Risklick"
+  default     = "jimmy622001"
 }

@@ -1,6 +1,6 @@
-# Risklick Main Infrastructure
+# jimmy622001 Main Infrastructure
 
-This repository contains the basic level of AWS infrastructure as infrastructure-as-code (IaC) using Terraform for the Risklick AWS cloud infrastructure.
+This repository contains the basic level of AWS infrastructure as infrastructure-as-code (IaC) using Terraform for the jimmy622001 AWS cloud infrastructure.
 
 ## Target architecture
 The target architecture on AWS including the service setups is the following:
@@ -16,7 +16,7 @@ The architecture fulfills the following key data:
 - The setup uses IaC with Terraform for all infrastructure deployments.
 - A high level of automation is key to ensure business scalability.
 
-The content of this repository and the [Proof-of-concept (PoC) repository](https://git.risklick.ch/ecs/poc) demonstrate a blueprint that can be adapted by Risklick for their individual services.
+The content of this repository and the [Proof-of-concept (PoC) repository](https://github.com/jimmy622001/poc) demonstrate a blueprint that can be adapted by jimmy622001 for their individual services.
 The main task for adapting this setup to their VM's is to adapt the PoC repository structure to each individual service.
 
 In this repository, we make use of a Makefile that serves as a wrapper for more complex shell commands. 
@@ -135,4 +135,4 @@ The project uses the default GitLab CI/CD pipeline.
 All Terraform commands run inside a Docker container to ensure the same runtime environment locally and in the pipeline.
 To run Docker inside a GitLab pipeline, [Docker-in-Docker](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker) is required.
 
-**The Docker image is a standard Linux image containing Terraform and the AWS console. The image (defined in Makefile constant `DOCKER_IMAGE`) should be replaced with an image ownede by Risklick.**
+**The Docker image is a standard Linux image containing Terraform and the AWS console. The image (defined in Makefile constant `DOCKER_IMAGE`) should be replaced with an image owned by jimmy622001.**

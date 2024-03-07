@@ -26,7 +26,7 @@ variable "environment" {
 
 variable "resource_prefix" {
   description = "Unique prefix for all resource names"
-  default     = "Risklick"
+  default     = "jimmy622001"
   type        = string
 }
 
@@ -55,7 +55,7 @@ variable "ecs_ec2_instance_type" {
 
 variable "tag_scenario" {
   description = "Scenario name for all resources"
-  default     = "Risklick"
+  default     = "jimmy622001"
 }
 
 variable "vpc_cidr_block" {

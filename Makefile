@@ -5,7 +5,7 @@
 ########################################################################################################################
 
 DOCKER_IMAGE = public.ecr.aws/t9z0a2g1/nc/infrastructure-runner:latest
-REMOTE_STATE_S3_BUCKET = risklick-ch-terraform-state
+REMOTE_STATE_S3_BUCKET = jimmy622001-ch-terraform-state
 INFRA_WORKING_DIR = /infra
 SERVICE_NAME = infrastructure
 
