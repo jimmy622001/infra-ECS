@@ -5,7 +5,7 @@
 ########################################################################################################################
 
 DOCKER_IMAGE = public.ecr.aws/t9z0a2g1/nc/infrastructure-runner:latest
-REMOTE_STATE_S3_BUCKET = jimmy622001-ch-terraform-state
+REMOTE_STATE_S3_BUCKET = risklick-ch-terraform-state
 INFRA_WORKING_DIR = /infra
 SERVICE_NAME = infrastructure
 
@@ -76,4 +76,5 @@ endif
             -i $(DOCKER_IMAGE) \
             sh -c 'cd /terraform/infra/layers/$(layer) && terraform apply $(DESTROY_FLAG) -auto-approve infrastructure.tf.plan && rm -rf infrastructure.tf.plan'
 
-deploy: init plan apply ## Deploy Terraform layer for the specified environment
+deploy: init plan ## Deploy Terraform layer for the specified environment
+deploy-apply: init plan
