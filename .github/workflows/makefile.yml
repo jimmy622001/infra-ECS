@@ -9,7 +9,7 @@ REMOTE_STATE_S3_BUCKET = jimmy622001-ch-terraform-state
 INFRA_WORKING_DIR = /infra
 SERVICE_NAME = infrastructure
 
-#.PHONY: docker.shell init plan deploy
+.PHONY: docker.shell init plan deploy
 
 ########################################################################################################################
 ## Docker commands
