@@ -1,3 +1,3 @@
 environment      = "dev"
 vpc_cidr_block   = "10.3.0.0/16"
-ec2_key          = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLP1ZMALTfFv3rX/iJfe3UQwvQ7PBLLPTMVdx5F2X/nZ1HJV5bUKg6xSkjCtNfqfHkBf6PMCY0UivObFpq0z/sjKmmy9kZNOLWwscnRUDm48yY7h/b7VB2d9xIMLzzjPcUEKEjH/taGxCPpyrUxjP5WUzXlGcDduxRx0lkEHLYoswkQfvYicoji5jbZBOwev1xlj5bRoo1Hgo9UR6wUj4TVlgt4MY7c0P89BESnAqIEgotq+EMs1PZO3hOogpIHrKDBBAnX+PccwqRqb93WHEdt8Ht6M8xhVlfNQXwv"
+ec2_key          = "ssh-rsa xxxxxxx"
