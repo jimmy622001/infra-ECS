@@ -20,7 +20,7 @@ terraform {
 data "terraform_remote_state" "common" {
   backend = "s3"
   config = {
-    bucket = "jimmy622001-ch-terraform-state"
+    bucket = "demo1-terraform-state"
     region = var.region
     key    = "${var.s3_bucket_prefix}/common/terraform-common.tfstate"
   }
