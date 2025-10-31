@@ -22,5 +22,5 @@ variable "service_tld" {
 
 variable "tag_scenario" {
   description = "Scenario name for all resources"
-  default     = "jimmy622001"
+  default     = "demo"
 }
